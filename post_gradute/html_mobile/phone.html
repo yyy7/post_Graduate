@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>通讯录界面</title>
+		<link rel="stylesheet" type="text/css" href="../css_mobile/phone.css" />
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				console.log("读取xml文件。。。");
+				 //请求xml目录下的phone.xml文件
+				$.get('../xml/phone.xml',
+						{}, 
+						function(data) {
+							var html = "";
+							$(data).find("stu").each(function(){
+								//alert(11111);
+								
+								var  name=$(this).children("name").text();
+								//alert(name);
+								var  phone=$(this).children("phonenumber").text();
+								//alert(phone);
+								
+								//获取头像
+								var  img="../img/"+$(this).children("facepath").text();
+								//alert(img);
+
+								html += "<li class='phone_eveline'>";
+								html +="<img class='phone_img' src='"+img+"'/>";
+								html +="<ul class='inform'>";
+								html +="<li class='name'>"+name+"</li>";
+								html +="<li class='number'>"+phone+"</li>";
+								html +="</ul>";
+								html +="<div class='operate_icon'>";
+								html +="<a href='#'><img src='../img/call_1.png' class='call'/></a>";
+								html +="<img class='more' src='../img/arrow-_bidirectional.png'/>";
+								html +="<a href='#'><img src='../img/msg.png' class='msg'/></a>";
+								html +="</div>";
+								html +="</li>";
+								
+							});
+							$("#ulul").html(html);
+							//在html页面id=ulul的标签里显示html内容	
+							
+					
+							$(".phone_eveline").bind("click",function(){
+								$(this).children(".operate_icon").children(".more").hide();
+								var msg=$(this).children(".operate_icon").children("a").children(".msg");
+								var call=$(this).children(".operate_icon").children("a").children(".call");
+								$(".msg").css("margin-right","1rem");
+								$(".call").css("margin-right","1rem");
+								msg.slideDown(500);
+								call.slideDown(500);
+								$(this).css("background","#643144").siblings().css("background-color","");
+							
+							});
+							
+							
+							
+							$(".call").click(function(){
+								//这边是获取电话号码
+								var linkphone=$(this).parent("a").parent(".operate_icon").prev(".inform").children(".number").text();
+								//alert(linkphone);
+								var callphone='tel:'+linkphone;
+								$(this).parent("a").attr("href",callphone);
+							});
+							$(".msg").click(function(){
+								var linkphone=$(this).parent("a").parent(".operate_icon").prev(".inform").children(".number").text();
+								var smsphone='sms:'+linkphone;
+								$(this).parent("a").attr("href",smsphone);
+							});
+
+				}, "xml");
+				
+				
+//				$.ajax({
+//			 type:'get',
+//			 url:'../xml/phone.xml',
+//			 dataType:'xml',
+//			 success:function(data)
+//			 {
+//				 alert(data);
+//				
+//				var datas="<div>";
+//				
+//				$(data).find("stus").each(function(){
+//					
+//					
+//					alert(1111);
+//				});
+//				
+//				
+//				 datas+="</div>";
+//				
+//				$("#ulul").html(datas);
+//				
+//				//$("#ulul").trigger("create");
+//				 
+//			 },
+//			 error:function(msg,textStatus,errorThrown){
+//			 	alert(msg.responseText);
+//			 }
+//			  
+//			  
+//		  });
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="phone_header">
+			<div class="arrow_left">
+				<!-- 返回上一页重载页面，本地刷新 -->
+				<a href="javascript:history.go(-1);location.reload()">
+					<img src="../img/arrow-_left.png" />
+				</a>
+			</div>
+			<span class="phone_title">我的研友</span>
+		</div>
+		<div class="clear" style="clear: both;"></div>
+		<div class="phone_content">
+			<ul id="ulul">	
+			</ul>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>在线翻译</title>
+
+		<style type="text/css">
+			html {
+				width: 100%;
+				height: 100%;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				width: 100%;
+				background-image: url(../img/8104.png);
+			}
+			
+			a,
+			a:hover,
+			a:visited {
+				text-decoration: none;
+			}
+			
+			.header img {
+				margin-left: 2%;
+				margin-top: 1%;
+				width: 40px;
+				height: 40px;
+			}
+			
+			.header_font {
+				font-size: 30px;
+				font-family: Tahoma, Helvetica, Arial, '宋体', sans-serif;
+				margin-left: 6%;
+				color: white;
+				margin-top: -2.5rem;
+				display: block;
+			}
+			
+			.inputk {
+				margin-left: 5%;
+				margin-top: 6%;
+				height: 18rem;
+				opacity: 0.6;
+			}
+			
+			.chose {
+				margin-top: 2%;
+				margin-left: 2%;
+				width: 40%;
+			}
+			
+			button {
+				font-family: "微软雅黑";
+				font-size: 1rem;
+				border: none;
+				border-radius: 0.2rem;
+				color: black;
+				background-color: white;
+				width: 8%;
+				height: 1.5rem;
+			}
+			
+			select {
+				height: 1.5rem;
+				border-radius: 0.2rem;
+				font-size: 0.9rem;
+			}
+			
+			.inputk {
+				margin-left: 2%;
+				margin-top: 2%;
+			}
+			
+			#inputexplain {
+				width: 16%;
+			}
+			
+			.explain {
+				margin-left: 50%;
+				margin-top: -25%;
+				width: 40%;
+			}
+			
+			.inputtext {
+				font-size: 1.4rem;
+				font-family: "微软雅黑";
+				margin-left: 0%;
+			}
+			
+			.explaink {
+				border: 1px solid darkgrey;
+				width: 48%;
+				height: 14.9rem;
+				margin-left: 50%;
+				margin-top: 2.2%;
+				background-color: #9fa3a9;
+				opacity: 0.8;
+			}
+			
+			.sub {
+				cursor: pointer;
+				z-index: 10;
+			}
+		</style>
+
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js">
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				$(".sub").click(function() {
+
+					var inputtext = $(".inputtext").val();
+					//alert(inputtext);
+					$.ajax({
+						type: "post",
+						url: "http://route.showapi.com/32-9",
+						data: {
+							"showapi_appid": "39841",
+							"showapi_sign": "3b931c69138744f581892c4362755913",
+							"q": inputtext
+						},
+						dataType: "json",
+						beforeSend: function() {
+
+							console.log("正在请求英语单词服务器资源，请稍后...");
+
+						},
+						success: function(datas) {
+							var html = "";
+							//alert(datas.showapi_res_body.basic.explains.length);
+							for(var i = 0; i < datas.showapi_res_body.basic.explains.length; i++) {
+								//遍历data数组，从后台取出数据显示
+								//alert(datas.showapi_res_body.basic.explains);
+								html += "<h3>" + datas.showapi_res_body.basic.explains[i] + "</h3>";
+							}
+							$(".explaink").html(html);
+							//在html页面id=ulul的标签里显示html内容	
+
+						}
+					});
+
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="all">
+			<!--头部-->
+			<div class="header">
+				<a href="javascript:history.go(-1);location.reload()">
+					<span class="header_icon">
+						<img src="../img/back.png" /></span>
+					<span class="header_font">翻译</span>
+				</a>
+
+			</div>
+			<hr style="color: #747b81; margin-top: 2%;" />
+			<div class="chose">
+				<button>英语</button>
+				<button>中文</button>
+				<button>德语</button>
+				<select name="inputcontent" id="inputcontent">
+					<option value="">检测语言</option>
+					<option value="">西班牙语</option>
+					<option value="">俄语</option>
+					<option value="">韩语</option>
+					<option value="">日语</option>
+					<option value="">巴塞罗那语</option>
+				</select>
+
+			</div>
+			<div class="inputk">
+				<textarea class="inputtext" rows="8" cols="54"></textarea>
+			</div>
+
+			<div>
+				<div class="explain">
+					<button>中文</button>
+					<button>英语</button>
+					<button>日语</button>
+					<select name="inputexplain" id="inputexplain">
+						<option value=""></option>
+						<option value="">西班牙语</option>
+						<option value="">俄语</option>
+						<option value="">韩语</option>
+						<option value="">日语</option>
+						<option value="">巴塞罗那语</option>
+					</select>
+					<button class="sub">翻译</button>
+				</div>
+				<div class="explaink">
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

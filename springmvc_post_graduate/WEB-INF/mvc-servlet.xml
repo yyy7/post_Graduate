@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+<!-- 前端URL映射器 -->
+<bean id="urlmapping"  class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+   <property name="mappings">
+     <props>
+       <prop key="/user.do">userController</prop>
+     </props>
+   </property>
+</bean>
+<bean  id="userController"  class="com.yyy.user.action.UsersController"></bean>
+
+ </beans>

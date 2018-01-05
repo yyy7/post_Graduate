@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>图灵机器人主界面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../css/web_date.css" />
+		<script src="../js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".weather").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".count").children("img").css("margin-top", "7.5rem");
+					$(".date").children("img").css("margin-top", "7.5rem");
+					$(".xing").children("img").css("margin-top", "7.5rem");
+					$(".joke").children("img").css("margin-top", "7.5rem");
+					$(".life").children("img").css("margin-top", "7.5rem");
+					$("#con_weather").show();
+					$("#con_count").hide();
+					$("#con_date").hide();
+					$("#con_joke").hide();
+					$("#con_xing").hide();
+					$("#con_life").hide();
+
+					$(".w_bigicon").show();
+					$(".c_bigicon").hide();
+					$(".d_bigicon").hide();
+					$(".j_bigicon").hide();
+					$(".l_bigicon").hide();
+					$(".x_bigicon").hide();
+
+				})
+				$(".count").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".weather").children("img").css("margin-top", "7.5rem");
+					$(".date").children("img").css("margin-top", "7.5rem");
+					$(".xing").children("img").css("margin-top", "7.5rem");
+					$(".joke").children("img").css("margin-top", "7.5rem");
+					$(".life").children("img").css("margin-top", "7.5rem");
+					$("#con_count").show();
+					$("#con_weather").hide();
+					$("#con_date").hide();
+					$("#con_joke").hide();
+					$("#con_xing").hide();
+					$("#con_life").hide();
+
+					$(".w_bigicon").hide();
+					$(".c_bigicon").show();
+					$(".d_bigicon").hide();
+					$(".j_bigicon").hide();
+					$(".l_bigicon").hide();
+					$(".x_bigicon").hide();
+				});
+				$(".date").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".weather").children("img").css("margin-top", "7.5rem");
+					$(".count").children("img").css("margin-top", "7.5rem");
+					$(".xing").children("img").css("margin-top", "7.5rem");
+					$(".joke").children("img").css("margin-top", "7.5rem");
+					$(".life").children("img").css("margin-top", "7.5rem");
+					$("#con_date").show();
+					$("#con_weather").hide();
+					$("#con_count").hide();
+					$("#con_joke").hide();
+					$("#con_xing").hide();
+					$("#con_life").hide();
+
+					$(".w_bigicon").hide();
+					$(".c_bigicon").hide();
+					$(".d_bigicon").show();
+					$(".j_bigicon").hide();
+					$(".l_bigicon").hide();
+					$(".x_bigicon").hide();
+				});
+				$(".xing").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".weather").children("img").css("margin-top", "7.5rem");
+					$(".date").children("img").css("margin-top", "7.5rem");
+					$(".count").children("img").css("margin-top", "7.5rem");
+					$(".joke").children("img").css("margin-top", "7.5rem");
+					$(".life").children("img").css("margin-top", "7.5rem");
+					$("#con_xing").show();
+					$("#con_date").hide();
+					$("#con_weather").hide();
+					$("#con_count").hide();
+					$("#con_joke").hide();
+					$("#con_life").hide();
+
+					$(".w_bigicon").hide();
+					$(".c_bigicon").hide();
+					$(".d_bigicon").hide();
+					$(".j_bigicon").hide();
+					$(".l_bigicon").hide();
+					$(".x_bigicon").show();
+				});
+				$(".joke").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".weather").children("img").css("margin-top", "7.5rem");
+					$(".date").children("img").css("margin-top", "7.5rem");
+					$(".xing").children("img").css("margin-top", "7.5rem");
+					$(".count").children("img").css("margin-top", "7.5rem");
+					$(".life").children("img").css("margin-top", "7.5rem");
+					$("#con_joke").show();
+					$("#con_xing").hide();
+					$("#con_date").hide();
+					$("#con_weather").hide();
+					$("#con_count").hide();
+					$("#con_life").hide();
+
+					$(".w_bigicon").hide();
+					$(".c_bigicon").hide();
+					$(".d_bigicon").hide();
+					$(".j_bigicon").show();
+					$(".l_bigicon").hide();
+					$(".x_bigicon").hide();
+				});
+				$(".life").click(function() {
+					$(this).children("img").css("margin-top", "4.5rem");
+					$(".weather").children("img").css("margin-top", "7.5rem");
+					$(".date").children("img").css("margin-top", "7.5rem");
+					$(".xing").children("img").css("margin-top", "7.5rem");
+					$(".joke").children("img").css("margin-top", "7.5rem");
+					$(".count").children("img").css("margin-top", "7.5rem");
+					$("#con_life").show();
+					$("#con_joke").hide();
+					$("#con_xing").hide();
+					$("#con_date").hide();
+					$("#con_weather").hide();
+					$("#con_count").hide();
+
+					$(".w_bigicon").hide();
+					$(".c_bigicon").hide();
+					$(".d_bigicon").hide();
+					$(".j_bigicon").hide();
+					$(".l_bigicon").show();
+					$(".x_bigicon").hide();
+
+				});
+
+				//alert("请求图灵机器人的天气的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "南京天气",
+					userid: "123456"
+				}, function(data) {
+					//alert(data.text);
+					var bindDatas = "";
+					var msg = data.text;
+					var cityName = msg.substring(0, msg.indexOf(":"));
+					bindDatas += "<li class='name'>" + cityName + "天气:" + "</li>";
+					var newstr = msg.substring(msg.indexOf(":") + 1);
+					var datasArray = newstr.split(";");
+					for(var i = 0; i < datasArray.length; i++) {
+						bindDatas += "<li class='data'>" + datasArray[i] + "</li>";
+					}
+
+					$(".weather_forecast").append(bindDatas);
+					//							$(".weather_forecast").load("refresh");
+
+				}, "json");
+
+				//alert("请求图灵机器人的数字计算的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "6的平方加20除以5减lg100加5乘以9是多少"
+				}, function(data) {
+					//alert(data.text);
+					var countData = "";
+					var msg = data.text;
+					countData += "<li class='name'>" + data.text + "</li>";
+					$(".count_number").append(countData);
+					//							$(".count_number").load("refresh");
+				}, "json");
+
+				//alert("请求图灵机器人的日期查询的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "今天农历多少"
+				}, function(data) {
+					//alert(data.text);
+					var dateDatas = "";
+					var msg = data.text;
+					var dateName = msg.substring(15, msg.indexOf(":"));
+					dateDatas += "<li class='name'>" + dateName + "</li>";
+					var datestr = msg.substring(15, 30);
+
+					dateDatas += "<li class='data'>" + datestr + "</li>";
+					$(".date_search").append(dateDatas);
+					//							$(".date_search").load("refresh");
+				}, "json");
+
+				//alert("请求图灵机器人的星座运势的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "处女座的运势"
+				}, function(data) {
+					//							alert(data.text);						
+					//							$(".xing_fortune").append("处女座："+data.text);
+					//							$(".xing_fortune").listview("refresh");
+				}, "json");
+
+				//白羊座
+				$(".baiyang").click(function() {
+					$(".xing_iframe").attr("src", "baiyang.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+
+				});
+				//金牛座
+				$(".jinniu").click(function() {
+					$(".xing_iframe").attr("src", "jinniu.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//双子座
+				$(".shuangzi").click(function() {
+					$(".xing_iframe").attr("src", "shuangzi.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//巨蟹座
+				$(".juxie").click(function() {
+					$(".xing_iframe").attr("src", "juxie.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//狮子座
+				$(".shizi").click(function() {
+					$(".xing_iframe").attr("src", "shizi.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//处女座
+				$(".chunv").click(function() {
+					$(".xing_iframe").attr("src", "chunv.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//天秤座
+				$(".tiancheng").click(function() {
+					$(".xing_iframe").attr("src", "tiancheng.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//天蝎座
+				$(".tianxie").click(function() {
+					$(".xing_iframe").attr("src", "tianxie.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row3").children("span").removeClass("xingfont_click");
+				});
+				//射手座
+				$(".sheshou").click(function() {
+					$(".xing_iframe").attr("src", "sheshou.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+				});
+				//摩羯座
+				$(".mojie").click(function() {
+					$(".xing_iframe").attr("src", "mojie.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+				});
+				//水瓶座
+				$(".shuiping").click(function() {
+					$(".xing_iframe").attr("src", "shuiping.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+				});
+				//双鱼座
+				$(".shuangyu").click(function() {
+					$(".xing_iframe").attr("src", "shuangyu.html");
+					$(this).addClass("xingfont_click");
+					$(this).siblings("span").removeClass("xingfont_click");
+					$(".row1").children("span").removeClass("xingfont_click");
+					$(".row2").children("span").removeClass("xingfont_click");
+				});
+
+				//alert("请求图灵机器人的笑话大全的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "讲个笑话"
+				}, function(data) {
+					//alert(data.text);
+					var jokeDatas = "";
+					var msg = data.text;
+					jokeDatas += "<li class='data'>" + msg + "</li>";
+					$(".joke_book").append(jokeDatas);
+					//$(".joke_book").load("refresh");
+				}, "json");
+
+				$(".nextjoke").click(function() {
+					$(".joke_book").empty();
+					$.post("http://www.tuling123.com/openapi/api", {
+						"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+						info: "讲个笑话"
+					}, function(data) {
+						//alert(data.text);
+						var jokeDatas = "";
+						var msg = data.text;
+						jokeDatas += "<li class='data'>" + msg + "</li>";
+						$(".joke_book").append(jokeDatas);
+						//$(".joke_book").execCommand("refresh");
+
+					}, "json");
+
+				});
+
+				//alert("请求图灵机器人的生活百科的数据");
+				$.post("http://www.tuling123.com/openapi/api", {
+					"key": "6cb7e63147634ac89ef0e5fd2fef8dc4",
+					info: "图灵的简介"
+				}, function(data) {
+					//alert(data.text);
+					var lifeDatas = "";
+					var msg = data.text;
+
+					lifeDatas += "<li class='data'>" + msg + "</li>";
+					$(".life_baike").append(lifeDatas);
+					//$(".life_baike").load("refresh");
+				}, "json");
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="tuling">
+			<!--头部-->
+			<div class="header">
+				<a href="javascript:history.go(-1);location.reload()">
+					<span class="header_icon">
+						<img src="../img/back.png" /></span>
+					<span class="header_font">图灵接口</span>
+				</a>
+
+			</div>
+
+			<!--内容区-->
+			<div class="content ">
+
+				<!--天气查询 -->
+				<div id="con_weather">
+					<div class="weather_title">天气预报</div>
+					<div class="weather_explain">为您实时查询未来几天实况天气</div>
+					<div class="weather_img"><img src="../img/weatherimg.png" /></div>
+					<div class="weather_forecast"></div>
+				</div>
+
+				<!--数字计算-->
+				<div id="con_count">
+					<div class="count_title">数字计算</div>
+					<div class="count_explain">可进行乘方,开方,指数,统计等方面的运算</div>
+					<div class="count_img"><img src="../img/countimg.png" /></div>
+					<div class="count_number"></div>
+				</div>
+
+				<!--日期查询-->
+				<div id="con_date">
+					<div class="date_title">日期查询</div>
+					<div class="date_explain">对星期,日期以及节假日时间的查询</div>
+					<div class="date_img"><img src="../img/dateimg.png" /></div>
+					<div class="date_search"></div>
+				</div>
+				<!--星座运势-->
+				<div id="con_xing">
+					<div class="xing_title">星座运势</div>
+					<div class="xing_explain">时刻掌握星运动向</div>
+					<div class="xing_img"><img src="../img/xingimg.png" /></div>
+					<div class="xing_fortune name">
+						<div class="row1">
+							<span class="baiyang xingfont_click">白羊座</span>
+							<span class="jinniu xing">金牛座</span>
+							<span class="shuangzi xing">双子座</span>
+							<span class="juxie xing">巨蟹座</span>
+						</div>
+						<div class="row2">
+							<span class="shizi xing">狮子座</span>
+							<span class="chunv xing">处女座</span>
+							<span class="tiancheng xing">天秤座</span>
+							<span class="tianxie xing">天蝎座</span>
+						</div>
+						<div class="row3">
+							<span class="sheshou xing">射手座</span>
+							<span class="mojie xing">摩羯座</span>
+							<span class="shuiping xing">水瓶座</span>
+							<span class="shuangyu xing">双鱼座</span>
+						</div>
+
+					</div>
+					<iframe class="xing_iframe" src="baiyang.html" scrolling="auto" frameborder="0"></iframe>
+				</div>
+				<!--笑话大全-->
+				<div id="con_joke">
+					<div class="joke_title">笑话大全</div>
+					<div class="joke_explain">互联网的幽默,内涵的笑话与段子</div>
+					<div class="joke_img"><img src="../img/jokeimg.png" /></div>
+					<div class="joke_book"></div>
+					<div class="nextjoke"><img src="../img/nextjoke.png" /></div>
+				</div>
+				<!--生活百科-->
+				<div id="con_life">
+					<div class="life_title">生活百科</div>
+					<div class="life_explain">做你的生活小宝典</div>
+					<div class="life_img"><img src="../img/lifeimg.png" /></div>
+					<div class="tuname">图灵的简介:</div>
+					<div class="life_baike"></div>
+				</div>
+			</div>
+
+			<!--尾部-->
+			<div class="footer ">
+				<div class="w_bigicon"><img src="../img/w.png" /></div>
+				<div class="c_bigicon"><img src="../img/c.png" /></div>
+				<div class="d_bigicon"><img src="../img/d.png" /></div>
+				<div class="x_bigicon"><img src="../img/x.png" /></div>
+				<div class="j_bigicon"><img src="../img/j.png" /></div>
+				<div class="l_bigicon"><img src="../img/l.png" /></div>
+
+				<ul class="footer_theme ">
+					<li class="weather ">
+						<img src="../img/weather.png" />
+					</li>
+					<li class="count ">
+						<img src="../img/count.png" />
+					</li>
+					<li class="date ">
+						<img src="../img/date.png" />
+					</li>
+					<li class="xing ">
+						<img src="../img/xing.png" />
+					</li>
+					<li class="joke ">
+						<img src="../img/joke.png" />
+					</li>
+					<li class="life ">
+						<img src="../img/life.png" />
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

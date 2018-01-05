@@ -1,0 +1,284 @@
+
+body {
+	font-family: Verdana, 宋体, Helvetica, sans-serif;
+	
+	background-color:  #000;
+}
+
+.tuling{
+	
+}
+
+.header img{
+	margin-left: 3% ;
+	margin-top: 1%;	
+	width: 40px;
+	height: 40px;
+}
+
+.header_font{
+	font-size: 30px;
+	font-family:Tahoma,Helvetica,Arial,'宋体',sans-serif;
+	margin-left: 6%;
+	color: white;
+	margin-top: -3.5rem;
+	display: block;
+}
+
+.content{
+	width: 45%;
+	height: 49.5rem;
+	margin-left: 45%;
+	margin-top: ;
+	
+	border: 1px solid white;
+	border-radius: 1rem;
+	background-color: #fff;	
+}
+
+/*===================================天气查询==============================================*/
+#con_weather{
+	
+}
+.weather_title ,.count_title ,.date_title ,.joke_title,.xing_title,.life_title{
+	margin-left: 2%;
+	margin-top: 1%;
+	font-weight: bold;
+	font-family: Verdana, 宋体, Helvetica, sans-serif;
+	font-size: 22px;
+}
+.weather_explain ,.count_explain,.date_explain,.joke_explain,.xing_explain,.life_explain{
+	margin-left: 2%;
+	font-size: 18px;
+	font-family: 微软雅黑;
+	color: #747b81;
+	word-spacing: 1rem;
+}
+.weather_img img, .count_img img, .date_img img, .joke_img img, .xing_img img, .life_img img{
+	margin-top:2%;
+	width: 100%;
+	height: 32rem;
+}
+.weather_forecast, .count_number, .date_search, .joke_book, .xing_fortune, .life_baike{
+	margin-left: 2%;
+	color: #747b81;
+	font-size: 14px;
+}
+
+.name{
+	color: #747b81;
+	font-size: 18px;
+	font-family: 微软雅黑;
+	height: 2rem;
+	cursor: pointer;
+}
+.data
+{
+	font-size: 14px;
+	font-family: 微软雅黑;
+	height:2rem;
+}
+
+/*========================================数字计算================================================*/
+#con_count{
+	display: none;
+}
+
+/*========================================日期查询====================================================*/
+#con_date{
+	display:none;
+}
+/*========================================星座运势====================================================*/
+#con_xing{
+	display: none;
+}
+
+.xing{
+	color: #747b81;
+	letter-spacing: 0.2rem;
+	margin-left: 0.2rem;
+	
+}
+
+/*.baiyang{
+	color:#02325a;
+	font-weight:bold;
+}*/
+.xing_iframe{
+	margin-top: 7%;
+	width: 98%;
+	height: 5rem;
+}
+
+.xingfont_click{
+	color:#02325a;
+	font-weight:bold;
+	letter-spacing: 0.2rem;
+	margin-left: 0.2rem;
+}
+/*========================================笑话大全====================================================*/
+#con_joke{
+	display: none;
+}
+.nextjoke{
+	position: fixed;
+	bottom: 2rem;
+	right: 12rem;
+	cursor: pointer;
+}
+/*========================================生活百科====================================================*/
+#con_life{
+	display:none;
+}
+.tuname{
+	color: #747b81;
+	font-size: 16px;
+	font-family: 微软雅黑;
+	height: 2rem;
+	margin-left: 2%;
+}
+ul,
+li {
+	list-style-type: none;
+}
+
+.footer {
+	width: 45%;
+	height: 8rem;
+	/*border: 1px solid white;*/
+	position: fixed;
+	bottom: 20%;
+	left: 0;
+	
+}
+
+.w_bigicon img ,.c_bigicon img ,.d_bigicon img ,.x_bigicon img ,.j_bigicon img ,.l_bigicon img{
+	
+	/*border: 1px solid white;*/
+	margin-left: 10%;
+	position: fixed;
+	bottom: 50%;
+	animation-name: pic;
+	/*动画名字是pic，与上面定义的名字一样*/
+	animation-duration: 10s;
+	/*动画用时*/
+	animation-timing-function: linear;
+	/*匀速动画*/
+	animation-iteration-count: infinite; /*无限循环*/
+}
+
+.c_bigicon,.c_bigicon,.d_bigicon ,.x_bigicon ,.j_bigicon ,.l_bigicon {
+	display: none;
+}
+
+@keyframes pic {
+	0% {
+		transform: rotate(0deg) scale(0.6);
+		/*opacity: 0.3;
+		/*透明度*/*/
+	}
+	10% {
+		transform: rotate(72deg) scale(0.8);
+		/*opacity: 0.6;*/
+	}
+	20% {
+		transform: rotate(108deg) scale(1);
+		/*opacity: 0.6;*/
+	}
+	30% {
+		transform: rotate(144deg) scale(1.2);
+		/*opacity: 0.6;*/
+	}
+	40% {
+		transform: rotate(180deg) scale(1.4);
+		/*opacity: 0.9;*/
+	}
+	50% {
+		transform: rotate(380deg) scale(1.6);
+		/*opacity: 0.6;*/
+	}
+	60% {
+		transform: rotate(144deg) scale(1.4);
+		/*opacity: 1;*/
+	}
+	70% {
+		transform: rotate(108deg) scale(1.2);
+		/*opacity: 0.6;*/
+	}
+	80% {
+		transform: rotate(72deg) scale(1);
+		/*opacity: 1;*/
+	}
+	90% {
+		transform: rotate(36deg) scale(0.8);
+		/*opacity: 0.6;*/
+	}
+	100% {
+		transform: rotate(0deg) scale(0.6);
+		/*opacity: 1;*/
+	}
+}
+
+
+.footer_theme {
+	float: left;
+	width: 100%;
+	margin-top: 2%;
+}
+
+.footer_theme li {
+	width: 5%;
+    float: left;
+    margin-left: 9%;
+}
+
+.weather img,
+	.count img,
+	.date img,
+	.xing img,
+	.joke img,
+	.life img {
+	width: 5rem;
+}
+.weather img{
+		margin-top: 4.5rem;
+	}
+	.count img,
+	.date img,
+	.xing img,
+	.joke img,
+	.life img{
+		margin-top: 7.5rem ;
+	}
+
+@media only screen and (max-width:768px) {
+	.footer_theme {
+		float: left;
+		width: 100%;
+		margin-left: 20%;
+	}
+	.footer_theme li {
+		width: 10%;
+		float: left;
+	}
+	.weather img,
+	.count img,
+	.date img,
+	.xing img,
+	.joke img,
+	.life img {
+		width: 2.6rem;
+		
+	}
+	.weather img{
+		margin-top: 4.5rem;
+	}
+	.count img,
+	.date img,
+	.xing img,
+	.joke img,
+	.life img{
+		margin-top: 7.5rem ;
+	}
+	
+}

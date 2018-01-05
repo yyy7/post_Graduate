@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>易源主界面</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".mainmenu").click(function() {
+					window.location.href = "school.html";
+				})
+			});
+		</script>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				width: 100%;
+			}
+			
+			body {
+				background: url("../img_mobile/yy.gif");
+			}
+			
+			#frame {
+				/*----------图片轮播相框容器----------*/
+				position: absolute;
+				/*--绝对定位，方便子元素的定位*/
+				width: 100%;
+				height: 30%;
+				overflow: hidden;
+				/*--相框作用，只显示一个图片---*/
+				border-radius: 0.5rem;
+				margin-top: 55%;
+				/*margin-left: 2%;*/
+				/*border: 1px solid white;*/
+			}
+			
+			#photos img {
+				float: left;
+				width: 23.8rem;
+				height: 11.25rem;
+				
+			}
+			
+			#photos {
+				/*---设置总的图片宽度--通过位移来达到轮播效果----*/
+				position: absolute;
+				z-index: 0.9rem;
+				width: calc(23.8rem * 5);
+				/*---修改图片数量的话需要修改下面的动画参数*/
+			}
+			
+			.play {
+				animation: ma 15s ease-out infinite alternate;
+				
+				/**/
+			}
+			
+			@keyframes ma {
+				/*---每图片切换有两个阶段：位移切换和静置。中间的效果可以任意定制----*/
+				0%,
+				20% {
+					margin-left: 0px;
+				}
+				25%,
+				40% {
+					margin-left: -23.8rem;
+				}
+				45%,
+				60% {
+					margin-left: -760px;
+				}
+				65%,
+				80% {
+					margin-left: -1140px;
+				}
+				85%,
+				100% {
+					margin-left: -1520px;
+				}
+			}
+			
+			.num {
+				position: absolute;
+				z-index: 10;
+				display: inline-block;
+				right: 10px;
+				top: 165px;
+				border-radius: 100%;
+				background: #000000;
+				width: 1rem;
+				height: 1rem;
+				line-height: 1rem;
+				cursor: pointer;
+				color: bisque;
+				text-align: center;
+				opacity: 0.7;
+			}
+			
+			.num:hover {
+				background: darkred;
+			}
+			
+			.num:hover,
+			#photos:hover {
+				animation-play-state: paused;
+			}
+			
+			.num:nth-child(2) {
+				margin-right: 30px
+			}
+			
+			.num:nth-child(3) {
+				margin-right: 60px
+			}
+			
+			.num:nth-child(4) {
+				margin-right: 90px
+			}
+			
+			.num:nth-child(5) {
+				margin-right: 120px
+			}
+			
+			#a1:hover~#photos {
+				animation: ma1 .5s ease-out forwards;
+			}
+			
+			#a2:hover~#photos {
+				animation: ma2 .5s ease-out forwards;
+			}
+			
+			#a3:hover~#photos {
+				animation: ma3 .5s ease-out forwards;
+			}
+			
+			#a4:hover~#photos {
+				animation: ma4 .5s ease-out forwards;
+			}
+			
+			#a5:hover~#photos {
+				animation: ma5 .5s ease-out forwards;
+			}
+			
+			@keyframes ma1 {
+				0% {
+					margin-left: -95.2rem;
+				}
+				100% {
+					margin-left: -0rem;
+				}
+			}
+			
+			@keyframes ma2 {
+				0% {
+					margin-left: -95.2rem;
+				}
+				100% {
+					margin-left: -23.8rem;
+				}
+			}
+			
+			@keyframes ma3 {
+				100% {
+					margin-left: -47.6rem;
+				}
+			}
+			
+			@keyframes ma4 {
+				100% {
+					margin-left: -71.4rem;
+				}
+			}
+			
+			@keyframes ma5 {
+				100% {
+					margin-left: -95.2rem;
+				}
+			}
+			
+			.enbook {
+				float: left;
+				margin-top: 18rem;
+				margin-left: 2%;
+				padding: 0.1rem;
+				cursor: pointer;
+			}
+			
+			.word1 {
+				padding: 0.5rem;
+			}
+			
+			#kinds {
+				margin-top: 30%;
+			}
+			
+			ul {
+				list-style: none outside none;
+			}
+			.mainmenu {
+				margin-bottom: 50%;
+			}
+			body .mainmenu li {
+				float: left;
+				margin-left:4%;
+				margin-top: 3%;
+				width: 20%;
+				border-radius: 50%;
+			}
+			
+			body .mainmenu li a {
+				display: block;
+				color: #FFF;
+				text-align: center;
+				text-decoration: none;
+			}
+			
+			body .mainmenu li a b {
+				display: block;
+				height: 3rem;
+			}
+			
+			body .mainmenu li a img {
+				margin: 10px auto 10px;
+				width: 50px;
+				height: 50px;
+			}
+			
+			body .mainmenu li:hover {
+				width: 24%;
+			}
+			
+			body .mainmenu li a span {
+				display: block;
+				height: 30px;
+				line-height: 30px;
+				/*background-color:black;*/
+				color: black;
+				font-size: 0.7rem;
+			}
+			
+			body .mainmenu li:nth-child(n+1) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+2) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+3) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+4) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+5) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+6) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+7) {
+				background-color: #FFFFFF;
+			}
+			
+			body .mainmenu li:nth-child(n+8) {
+				background-color: #FFFFFF;
+			}
+			
+			#header {
+				margin-top: -8rem;
+			}
+			
+			.gg {
+				margin-top: -11.5rem;
+				display: block;
+				float: left;
+				margin-left: 2%;
+				border-radius: 0.5rem;
+				
+			}
+			
+			.gg1 {
+				margin-left: 30%;
+				margin-top: -2.7rem;
+				width: 80%;
+				color: #DDF0F8;
+			}
+			
+			#word2 {
+				float: left;
+				height: 10%;
+				width: 100%;
+			}
+			
+			.ps {
+				margin-left: 2%;
+				width: 100%;
+				color: #DDF0F8;
+			}
+			
+			body #word2 p span {
+				margin-left: 1%;
+				width: 100%;
+				padding: 2.5%;
+			}
+			
+		.header_icon img {
+				/*margin-left: 2%;
+				margin-top:25%;*/
+				position: fixed;
+				top: 1%;
+				left: 2%;
+				width: 40px;
+				height: 40px;
+			}
+
+		.header_font {
+			font-size: 30px;
+			font-family: Tahoma, Helvetica, Arial, '宋体', sans-serif;
+			/*margin-left: 12%;*/
+			position: fixed;
+			top: 1%;
+			left: 12%;
+			color: white;
+			/*margin-top: -2.5rem;*/
+			display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<span class="header_icon">
+					<a href="javascript:history.go(-1);location.reload()">
+						<img src="../img_mobile/back.png" />
+					</a>
+			</span>
+			<span class="header_font">易源接口</span>
+			
+			<ul class="mainmenu">
+				<li>
+					<a href="yy.html"><b><img src="../img_mobile/t7.png" /></b><span>礼品商城</span></a>
+				</li>
+				<li>
+					<a href="yy_translate.html"><b><img src="../img_mobile/t1.png" /></b><span>中英互译</span></a>
+				</li>
+				<li>
+					<a href="yy_music.html"><b><img src="../img_mobile/t2.png" /></b><span>天籁之音</span></a>
+				</li>
+				<li>
+					<a href="yy.html"><b><img src="../img_mobile/t5.png" /></b><span>学习社</span></a>
+				</li>
+				<li>
+					<a href="yy.html"><b><img src="../img_mobile/t3.png" /></b><span>搜索</span></a>
+				</li>
+				<li>
+					<a href="yy_yulu.html"><b><img src="../img_mobile/t4.png" /></b><span>励志语录</span></a>
+				</li>
+				<li>
+					<a href="yy_school.html"><b><img src="../img_mobile/t6.png" /></b><span>我的大学</span></a>
+				</li>
+				<li>
+					<a href="yy.html"><b><img src="../img_mobile/t8.png" /></b><span>玩转假期</span></a>
+				</li>
+			</ul>
+		</div>
+		<div id="frame">
+			<a id="a1" class="num"></a>
+			<a id="a2" class="num"></a>
+			<a id="a3" class="num"></a>
+			<a id="a4" class="num"></a>
+			<a id="a5" class="num"></a>
+			<div id="photos" class="play">
+				<img src="../img_mobile/s1.png" />
+				<img src="../img_mobile/s2.png" />
+				<img src="../img_mobile/s3.png" />
+				<img src="../img_mobile/s6.png" />
+				<img src="../img_mobile/s5.png" />
+
+			</div>
+		</div>
+		<div id="kinds">
+			<div class="enbook">
+				<a><img src="../img_mobile/zy1.png" width="70" height="90" class="word1" /></a>
+				<a><img src="../img_mobile/en1.png" width="70" height="90" class="word1" /></a>
+				<a><img src="../img_mobile/fs1.png" width="70" height="90" class="word1" /></a>
+				<a><img src="../img_mobile/hs1.png" width="70" height="90" class="word1" /></a>
+			</div>
+		</div>
+		<div class="gg">
+			<img src="../img_mobile/gg2.png" width="80px" />
+			<div class="gg1"><b>
+		<marquee direction="right" behavior="scroll"  scrollamount="4" scrolldelay="0" loop="-1" hspace="10" vspace="0">
+			   大学不知道上哪里？适合自己的才是最好的  ！
+		</marquee></b></div>
+		</div>
+		<div id="word2">
+			<p class="ps">
+				<span>放飞自我</span>
+				<span>人生简历</span>
+				<span>毕业典礼</span>
+				<span>走向独立</span>
+			</p>
+		</div>
+	</body>
+</html>

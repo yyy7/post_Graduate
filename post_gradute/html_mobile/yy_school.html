@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>易源大学排行榜</title>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".btn").click(function() {
+					var originVal = $("#origin option:selected").val();
+					//alert(originVal);
+					var areaVal = $("#area option:selected").val();
+					//alert(areaVal);
+					var branchVal = $("#branch option:selected").val();
+					//alert(branchVal);
+
+					$.ajax({
+						type: "post",
+						url: "http://route.showapi.com/307-1",
+						data: {
+							"showapi_appid": "39841",
+							"showapi_sign": "3b931c69138744f581892c4362755913",
+							"originId": originVal,
+							"areaId": areaVal,
+							"branchId": branchVal
+						},
+						dataType: "json",
+						beforeSend: function() {
+
+							//alert("正在请求大学排名服务器资源，请稍后...");
+						},
+
+						success: function(data) {
+							//alert("请求的数据为" + data);
+							var html = "";
+							var list=data.showapi_res_body.list;
+							for (var i=0;i<list.length;i++) {
+								html+="<p class='ptitle'>"+list[i].title+"</p>";
+								html+="<p class='plevel'>难度级别:"+list[i].level+"</p>";
+							}
+							$(".output").html(html);
+						}
+
+					});
+
+				});
+
+			});
+		</script>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				width: 100%;
+				background-image: url("../img_mobile/collage.png");
+				overflow: hidden;
+				background-repeat: no-repeat;
+			}
+			
+			.header img {
+				margin-left: 2%;
+				margin-top: 1%;
+				width: 30px;
+				height: 30px;
+			}
+
+		.header_font {
+			font-size: 30px;
+			font-family: Tahoma, Helvetica, Arial, '宋体', sans-serif;
+			margin-left: 12%;
+			color: #2a445c;
+			margin-top: -2.4rem;
+			display: block;
+			}
+			
+			.all{
+				margin-top: 2%;
+			}
+			
+			.input1 {
+				margin-top: 5%;
+				margin-left: 9%;
+				font-size: 1.2rem;
+				margin: 0.1rem;
+				/*border-top-color:red;*/
+				border-top-left-radius: 20px;
+				/*border-bottom-color: black;*/
+				border-bottom-right-radius: 20px;
+				text-align: center;
+			}
+			
+			.explain {
+				margin-top: -11%;
+				font-size: 1.1rem;
+				font-family: "微软雅黑";
+				margin-left: 17%;
+				color: gray;
+			}
+			
+			.branch {
+				margin-left: 11.5%;
+				width: 96.7%;
+			}
+			
+			select {
+				font-size: 1.2rem;
+				border: 0.1rem solid gainsboro;
+				margin-top: 0.5rem;
+				margin-bottom: 0.1rem;
+				border-top-color: black;
+				border-top-left-radius: 20px;
+				border-bottom-color: black;
+				border-bottom-right-radius: 20px;
+				text-align: center;
+				width: 80%;
+				padding: 0 2%;
+				height: 3rem;
+				/*opacity: 0.8;*/
+			}
+			
+			select option {
+				text-align: center;
+			}
+			
+			button {
+				border: none;
+				margin-left: 68%;
+				margin-top: 5%;
+				font-size: 1.4rem;
+				border-top-color: black;
+				border-top-left-radius: 20px;
+				border-bottom-color: black;
+				border-bottom-right-radius: 20px;
+				width: 20%;
+				background-color: #2a445c;
+				color: white;
+				cursor: pointer;
+			}
+			
+			.output{
+				position: fixed;
+				bottom: 0rem;
+				margin-left: 25%;
+				height: 26rem;
+				width: 80%;
+				text-align: center;
+				overflow: auto;
+				/*border: 1px solid black;*/
+				
+			}
+			.ptitle{
+				font-size: 1.4rem;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="all">
+			<div class="header">
+				<span class="header_icon">
+					<a href="javascript:history.go(-1);location.reload()">
+						<img src="../img_mobile/black_back.png" />
+					</a>
+				</span>
+				<span class="header_font">大学排行榜</span>
+			</div>
+			
+			<div class="input1">
+
+				<select name="origin" id="origin">
+					<option value="">请选择籍贯</option>
+					<option value="安徽">安徽</option>
+					<option value="北京">北京</option>
+					<option value="重庆">重庆</option>
+					<option value="福建">福建</option>
+					<option value="甘肃">甘肃</option>
+					<option value="广东">广东</option>
+					<option value="广西">广西</option>
+					<option value="贵州">贵州</option>
+					<option value="海南">海南</option>
+					<option value="河北">河北</option>
+
+					<option value="黑龙江">黑龙江</option>
+					<option value="河南">河南</option>
+					<option value="湖北">湖北</option>
+					<option value="湖南">湖南</option>
+					<option value="江苏">江苏</option>
+					<option value="江西">江西</option>
+					<option value="吉林">吉林</option>
+					<option value="辽宁">辽宁</option>
+					<option value="内蒙古">内蒙古</option>
+					<option value="宁夏">宁夏</option>
+
+					<option value="青海">青海</option>
+					<option value="山东">山东</option>
+					<option value="上海">上海</option>
+					<option value="山西">山西</option>
+					<option value="陕西">陕西</option>
+					<option value="四川">四川</option>
+					<option value="天津">天津</option>
+					<option value="新疆">新疆</option>
+					<option value="西藏">西藏</option>
+					<option value="云南">云南</option>
+
+					<option value="浙江">浙江</option>
+
+				</select>
+				<br>
+			</div>
+			<div class="input1">
+
+				<select name="" id="area">
+					<option value="">请选择目的省/市</option>
+					<option value="安徽">安徽</option>
+					<option value="北京">北京</option>
+					<option value="重庆">重庆</option>
+					<option value="福建">福建</option>
+					<option value="甘肃">甘肃</option>
+					<option value="广东">广东</option>
+					<option value="广西">广西</option>
+					<option value="贵州">贵州</option>
+					<option value="海南">海南</option>
+					<option value="河北">河北</option>
+
+					<option value="黑龙江">黑龙江</option>
+					<option value="河南">河南</option>
+					<option value="湖北">湖北</option>
+					<option value="湖南">湖南</option>
+					<option value="江苏">江苏</option>
+					<option value="江西">江西</option>
+					<option value="吉林">吉林</option>
+					<option value="辽宁">辽宁</option>
+					<option value="内蒙古">内蒙古</option>
+					<option value="宁夏">宁夏</option>
+
+					<option value="青海">青海</option>
+					<option value="山东">山东</option>
+					<option value="上海">上海</option>
+					<option value="山西">山西</option>
+					<option value="陕西">陕西</option>
+					<option value="四川">四川</option>
+					<option value="天津">天津</option>
+					<option value="新疆">新疆</option>
+					<option value="西藏">西藏</option>
+					<option value="云南">云南</option>
+
+					<option value="浙江">浙江</option>
+				</select>
+			</div>
+
+			<div class="branch">
+
+				<select name="branch" id="branch">
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+				<p class="explain">(1为理科，2为文科)</p>
+
+			</div>
+
+			<div class="output">
+
+			</div>
+			<button class="btn">确定</button>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>英文励志语录</title>
+		<script src="../js/jquery-3.1.1.min.js"></script>
+
+		<style type="text/css">
+			{
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				width: 100%;
+			}
+			
+			body {
+				width: 100%;
+				/*background-color: #000000;*/
+				background: url(../img/lz4.png);
+				/*overflow: hidden;*/
+			}
+			
+			a,
+			a:hover,
+			a:visited {
+				text-decoration: none;
+			}
+			
+			.test {
+				/*background-color: #CAE1FF;*/
+				color: #FFFFFF;
+				margin-left: 1%;
+				font-family: "gill sans mt ext condensed bold";
+				font-size: 1.2em;
+				margin-bottom: 2.5rem;
+			}
+			
+			.test2 {
+				color: #FFE4C4;
+				font-family: 楷体;
+				margin-top: -3%;
+				margin-left: 1%;
+				/*background-color: #9BCD9B;*/
+			}
+			
+			.header {
+				background-color: white;
+				font-size: 1.4rem;
+				border-top-left-radius: 20px;
+				border-bottom-right-radius: 20px;
+				text-align: center;
+				margin: 1rem;
+			}
+			
+			button {
+				background-color: white;
+				width: 8%;
+				height: 5%;
+				font-size: 1rem;
+				border-bottom-left-radius: 20px;
+				border-top-right-radius: 20px;
+				color: black;
+				cursor: pointer;
+				border: none;
+				position: fixed;
+				bottom: 1rem;
+				align-content: center;
+				margin-left: 47%;
+			}
+			
+			#content {
+				width: 100%;
+				height: 60%;
+			}
+			
+			.all {
+				height: 80%;
+			}
+			
+			.fh {
+				cursor: pointer;
+				position: absolute;
+				top: 2%;
+			}
+		</style>
+
+		<script type="text/javascript">
+			$(function() {
+				$("button").click(function() {
+					window.location.href = "web_yulu.html";
+				});
+
+				$.post('http://route.showapi.com/1211-1', {
+						"showapi_appid": "	39108",
+						"showapi_sign": "a63f1a5c644d4ba1a12e0041bd7fa8e0",
+						"count": 5
+					},
+					function(datas) {
+						console.log("请求数据中....");
+						var html = "";
+						//alert(datas.showapi_res_body.data.length);
+						for(var i = 0; i < datas.showapi_res_body.data.length; i++) {
+							//遍历data数组，从后台取出数据显示
+							html += "<div class='all'>";
+
+							html += "<div class='test'>" + datas.showapi_res_body.data[i].english + "</div>";
+							html += "<h3 class='test2'>"
+							html += "<div>" + datas.showapi_res_body.data[i].chinese + "</div></h3>";
+							html += "</div>";
+						}
+						$("#content").html(html);
+						//在html页面id=ulul的标签里显示html内容				
+					}, "json");
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="">
+			<a href="javascript:history.go(-1);location.reload()">
+				<img src="../img/back.png" width="20px" class="fh" />
+			</a>
+			<div class="header">
+				<p>中英文互译励志语录大全</p>
+			</div>
+
+		</div>
+		<div id="content">
+
+		</div>
+		<div class="footer">
+			<button>浏览更多</button>
+		</div>
+	</body>
+
+</html>

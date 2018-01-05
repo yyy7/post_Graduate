@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			.ptitle {
+				cursor: pointer;
+			}
+			.url{
+				display: none;
+			}
+			
+			ul{
+				/*width: 100%;*/
+				font-size: 1.2rem;
+				list-style:cambodian;
+			}
+			.content{
+				width: 100%;
+				height: 70%;
+				overflow:auto ;
+			}
+			.video{
+				position: fixed;
+				right: 0rem;
+				bottom: 0rem;
+				width: 100%;
+				height: 30%;
+			}
+			
+			.header_font{
+				font-family: 微软雅黑;
+				/*margin-left: 2%;*/
+				position: fixed;
+				top: 2%;
+				left: 10%;
+				font-size: 20px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				$(".backimg").click(function(){
+					window.history.go(-1);
+				});
+				
+//				$("#btn").click(function() {
+//					var typeVal = $("#type option:selected").val();
+//					alert(typeVal);
+//					var pageVal = $("#page").val();
+//					alert(pageVal);
+					$.ajax({
+						type: "post",
+						url: "http://route.showapi.com/255-1",
+						data: {
+							"showapi_appid": "39841",
+							"showapi_sign": "3b931c69138744f581892c4362755913",
+							"type": 41,
+
+//							"page": pageVal
+						},
+						dataType: "json",
+						beforeSend: function() {
+
+							console.log("正在请求视频服务器资源，请稍后...");
+						},
+
+						success: function(data) {
+//							alert("请求的数据为" + data);
+							var list = data.showapi_res_body.pagebean.contentlist;
+
+							var html = "";
+
+//							alert(list);
+							for(var i = 0; i < list.length; i++) {
+								//alert(list.length);
+								var url = list[i].video_uri;
+								
+								html +="<ul>";
+								html += "<li class='click'>";
+								html += "<p class='ptitle' >" + list[i].text + "</p>";
+								html+="<p class='url'>"+list[i].video_uri+"</p>";
+								html += "</li>";
+								html +="</ul>";
+
+							}
+
+							$(".content").html(html);
+
+							$(".ptitle").click(function() {
+								
+								var url=$(this).next(".url").text();
+								//var url = $(this).text();
+								console.log(url);
+								$(".video").attr("src", url);
+
+							});
+						}
+
+					});
+
+//				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="all">
+			<div class="header">
+				<span class="header_icon">
+					
+						<img src="../img/black_back.png" class="backimg"/>
+					
+				</span>
+				<span class="header_font">本地服务</span>
+			</div>
+
+			<!--<div class="page">
+				<input type="text" name="page" id="page" value="1" />
+			</div>-->
+
+			<div class="content">
+				
+			</div>
+			
+
+			<!--<button id="btn">确定</button>-->
+			
+			<video src="" class="video" controls="controls" autoplay="autoplay"></video>
+		</div>
+	</body>
+
+</html>

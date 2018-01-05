@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/web_music.css" />
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				//页面一加载，就显示流行榜
+				$(".bg-02").addClass("hover");
+				$.ajax({
+					type: "post",
+					url: "http://route.showapi.com/213-4",
+					data: {
+						"showapi_appid": "39108",
+						"showapi_sign": "a63f1a5c644d4ba1a12e0041bd7fa8e0",
+						"topid": 4
+					},
+					dataType: "json",
+					beforeSend: function() {
+
+						console.log("正在请求QQ音乐服务器资源，请稍后...");
+
+					},
+					success: function(data) {
+
+						console.log("服务器传回的数据:" + data);
+						//alert(11111);
+						var html = "";
+						var list = data.showapi_res_body.pagebean.songlist;
+						for(var i = 0; i < list.length; i++) {
+							//遍历data数组，从后台取出数据显示
+							var listArray = list[i];
+							//alert(list.albumname);
+							html += "<li class='song_eveline'>";
+							html += "<img class='albumpic_small_name albumpic_small' src='" + listArray.albumpic_small + "' />";
+							html += "<span class='music_title songname'>" + listArray.songname + "</span>"
+							html += "<span class='singer singername'>" + listArray.singername + "</span>";
+							html += "<span class='url_hidden'>" + listArray.url + "</span>";
+							html += "<span class='operate operate_icon'>";
+							html += "<img class='play_icon' src='../img/play.png'/>";
+							html += "<img class='download_icon' src='../img/download.png'/>";
+							html += "<span class='downurl_hidden'>" + listArray.downUrl + "</span>";
+							html += "</span>";
+
+						}
+						//alert("显示在页面");
+						$("#ul_list").html(html);
+						//在html页面id=ulul的标签里显示html内容	
+
+						//控制音乐播放
+						$(".play_icon").click(function() {
+							//点到当前行变色
+							$(this).parent(".operate_icon").parent(".song_eveline").css("background","#e4e4e6").siblings().css("background","");
+							console.log("点击了播放按钮");
+							var thisUrl = $(this).parent(".operate").prev(".url_hidden").text();
+							console.log(thisUrl);
+							$(".audio").attr("src", thisUrl);
+							var pic = $(this).parent(".operate").parent(".song_eveline").children(".albumpic_small_name").attr("src");
+							var now_songname = $(this).parent(".operate").parent(".song_eveline").children(".songname").text();
+							var now_singername = $(this).parent(".operate").parent(".song_eveline").children(".singername").text();
+							//alert(now_songname);
+							$(".albumpic_middle").attr("src", pic);
+							$(".now_songname").text(now_songname);
+							$(".now_singername").text(now_singername);
+						});
+
+						//歌曲下载按钮
+						$(".download_icon").click(function() {
+							console.log("点击了下载按钮");
+							var thisDownUrl = $(this).next(".downurl_hidden").text();
+							console.log(thisDownUrl);
+						});
+
+					}
+
+				});
+				
+				//点击左侧分类的时候获取数据
+				$(".classify").click(function() {
+					$(".classify").removeClass("hover");
+					$(this).addClass("hover");
+					var selectValue = $(this).children(".value").text();
+					console.log(selectValue);
+					var selectTitleName = $(this).children(".classify_content").text();
+					$(".classify_title").text(selectTitleName);
+					$.ajax({
+
+						type: "post",
+						url: "http://route.showapi.com/213-4",
+						data: {
+							"showapi_appid": "39108",
+							"showapi_sign": "a63f1a5c644d4ba1a12e0041bd7fa8e0",
+							"topid": selectValue
+						},
+						dataType: "json",
+						beforeSend: function() {
+
+						     console.log("正在请求QQ音乐服务器资源，请稍后...");
+
+						},
+						success: function(data) {
+
+							console.log("服务器传回的数据:" + data);
+
+//							alert(11111);
+							var html = "";
+							var list = data.showapi_res_body.pagebean.songlist;
+							for(var i = 0; i < list.length; i++) {
+								//遍历data数组，从后台取出数据显示
+								var listArray = list[i];
+								//alert(list.albumname);
+								html += "<li class='song_eveline'>";
+								html += "<img class='albumpic_small_name albumpic_small' src='" + listArray.albumpic_small + "' />";
+								html += "<span class='music_title songname'>" + listArray.songname + "</span>"
+								html += "<span class='singer singername'>" + listArray.singername + "</span>";
+								html += "<span class='url_hidden'>" + listArray.url + "</span>";
+								html += "<span class='operate operate_icon'>";
+								html += "<img class='play_icon' src='../img/play.png'/>";
+								html += "<img class='download_icon' src='../img/download.png'/>";
+								html += "<span class='downurl_hidden'>" + listArray.downUrl + "</span>";
+								html += "</span>";
+
+							}
+							$("#ul_list").html(html);
+
+							//在html页面id=ulul的标签里显示html内容	
+
+							//控制音乐播放
+							$(".play_icon").click(function() {
+								//点到当前行变色
+								$(this).parent(".operate_icon").parent(".song_eveline").css("background","#e4e4e6").siblings().css("background","");
+								console.log("点击了播放按钮");
+								var thisUrl = $(this).parent(".operate").prev(".url_hidden").text();
+//								alert(thisUrl);
+								$(".audio").attr("src", thisUrl);
+								var pic = $(this).parent(".operate").parent(".song_eveline").children(".albumpic_small_name").attr("src");
+								var now_songname = $(this).parent(".operate").parent(".song_eveline").children(".songname").text();
+								var now_singername = $(this).parent(".operate").parent(".song_eveline").children(".singername").text();
+								//alert(now_songname);
+								$(".albumpic_middle").attr("src", pic);
+								$(".now_songname").text(now_songname);
+								$(".now_singername").text(now_singername);
+							});
+
+							//歌曲下载按钮
+							$(".download_icon").click(function() {
+								console.log("点击了下载按钮");
+								var thisDownUrl = $(this).next(".downurl_hidden").text();
+								console.log(thisDownUrl);
+							});
+						}
+
+					});
+				});
+
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="content">
+			<!--头部-->
+			<div class="header">
+				<a href="javascript:history.go(-1);location.reload()">
+					<span class="header_icon">
+						<img src="../img/back.png" /></span>
+					<span class="header_font">易源音乐</span>
+				</a>
+
+			</div>
+			<!--左侧竖歌曲分类 start-->
+			<div class="all_classify">
+				<div class="eve_classify">
+					<div class="classify bg-01">
+						<span class="value">3</span>
+						<span class="classify_content classify01">欧美</span>
+					</div>
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-02'>
+						<span class="value">4</span>
+						<span class='classify_content classify02'>流行榜</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-03'>
+						<span class="value">5</span>
+						<span class='classify_content classify03'>内地</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-04'>
+						<span class="value">6</span>
+						<span class='classify_content classify04'>港台</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-05'>
+						<span class="value">16</span>
+						<span class='classify_content  classify06'>韩国</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-06'>
+						<span class="value">17</span>
+						<span class='classify_content  classify07'>日本</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-07'>
+						<span class="value">26</span>
+						<span class='classify_content classify08'>热歌</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-08'>
+						<span class="value">27</span>
+						<span class='classify_content classify09'>新歌</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-09'>
+						<span class="value">28</span>
+						<span class='classify_content classify10'>网络歌曲</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+
+					<div class='classify bg-10'>
+						<span class="value">32</span>
+						<span class='classify_content classify11'>音乐人</span>
+					</div>
+
+				</div>
+				<div class='eve_classify'>
+					<div class='classify bg-11'>
+						<span class="value">36</span>
+						<span class='classify_content classify12'>K歌金曲</span>
+					</div>
+				</div>
+			</div>
+			<!--左侧竖歌曲分类 end-->
+
+			<div class="clear"></div>
+
+			<div class="right_show">
+				<div class="classify_title">流行榜</div>
+				<div class="song_content">
+					<div class="song_alltitle">
+						<span class="albumpic_small_name">图片</span>
+						<span class="music_title">音乐标题</span>
+						<span class="singer">歌手</span>
+						<span class="operate">操作</span>
+					</div>
+					<ul id="ul_list">
+					</ul>
+				</div>
+
+			</div>
+			<div class="footer">
+				<img class="albumpic_middle" src="../img/now_music_photo.png" />
+				<span class="now_songname">夏至未至</span>
+				<span class="now_singername">胡夏</span>
+				<audio class="audio" controls="controls" src="" autoplay="autoplay"></audio>
+			</div>
+		</div>
+	</body>
+
+</html>

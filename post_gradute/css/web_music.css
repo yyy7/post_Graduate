@@ -1,0 +1,262 @@
+.content {
+	width: 100%;
+	height: 57rem;
+	background: #000000;
+	margin: 0 auto;
+}
+.header img{
+	margin-left: 3% ;
+	margin-top: 1%;	
+	width: 40px;
+	height: 40px;
+}
+
+.header_font{
+	font-size: 30px;
+	font-family:Tahoma,Helvetica,Arial,'宋体',sans-serif;
+	margin-left: 6%;
+	color: white;
+	margin-top: -3.5rem;
+	display: block;
+}
+
+/*============================左侧竖歌曲分类样式 start=======================*/
+.all_classify {
+	position: fixed;
+	top: 10%;
+	width: 0px;
+	overflow: visible;
+}
+
+.eve_classify {
+	display: inline-block;
+	clear: both;
+	cursor: pointer;
+}
+
+.classify {
+	width: 5rem;
+	position: relative;
+	left: 3.2rem;
+	padding: .6rem 3.2rem;
+	margin: .4rem;
+	transition: all 0.3s ease-in-out 0.1s;
+}
+
+/*.classify:hover {
+	position: relative;
+	left: 100%;
+	margin-left: -1.2rem;
+	transition: all 0.3s ease-in-out;
+}*/
+
+.value {
+	display: none;
+}
+
+.classify_content {
+	display: inline-block;
+	color: #fff;
+	font-size: 1.6rem;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.bg-01 {
+	background: #b81d28;
+}
+
+.bg-02 {
+	background: #6d888e;
+}
+
+.bg-03 {
+	background: #8DC2BC;
+}
+
+.bg-04 {
+	background: #EDD6B4;
+}
+
+.bg-05 {
+	background: #BE7467;
+}
+
+.bg-06 {
+	background: #E2AE63;
+}
+
+.bg-07 {
+	background: #fddcba;
+}
+
+.bg-08 {
+	background: #f0c34f;
+}
+
+.bg-09 {
+	background: #d0fa62;
+}
+
+.bg-10 {
+	background: #f360d1;
+}
+
+.bg-11 {
+	background: #0139ca;
+}
+/*==========================左侧竖歌曲分类样式 end========================*/
+.right_show{
+	width: 70%;
+	height: 40rem;
+	background: #fafafa;
+	border-radius: 2rem;
+    position: fixed;
+    left: 21%;
+    top: 11%;
+}
+.classify_title{
+	width: 68.7%;
+    color: #0c73c2;
+    height: 4rem;
+    line-height: 3rem;
+    font-size: 1.8rem;
+    padding-left: 1.5rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    position: fixed;
+    background: #ccc;
+}
+.song_alltitle{
+	width: 70%;
+	height: 3.4rem;
+	line-height: 3.4rem;
+	position: fixed;
+    top: 16%;
+    background: #ccc;
+}
+.songlist_li>ul>li:nth-child(2n+1) {
+	background-color: #fafafa;
+}
+
+.song_content>ul>li:nth-child(2n) {
+	background-color: #f5f5f7;
+}
+
+.song_eveline {
+	width: 100%;
+	height: 3.4rem;
+	line-height: 3.4rem;
+	cursor: pointer;
+}
+.song_eveline .albumpic_small{
+	width: 3rem;
+	height: 3rem;
+	float: left;
+	vertical-align: middle;
+    margin-top: .2rem;
+}
+
+.albumpic_small_name,.music_title,.singer,.operate{
+	color: #666666;
+	font-size: 1.6rem;
+}
+.albumpic_small_name{
+	width: 5%;
+    display: inline-block;
+    margin-left: 1.5rem;
+    float: left;
+}
+.music_title{
+	width: 56%;
+    display: inline-block;
+}
+.singer{
+	width: 30%;
+    display: inline-block;
+}
+.operate{
+	width: 6%;
+    display: inline-block;
+}
+.songname,.singername{
+	font-size: 1.4rem;
+	color: #333;   
+	text-indent: 1rem;
+}
+.url_hidden{
+	display: none;
+}
+.downurl_hidden{
+	display: none;
+}
+#ul_list{
+	height: 57rem;
+    display: block;
+    width: 100%;
+    margin-top: 6.4rem;
+}
+.right_show{
+	overflow: auto;
+}
+::-webkit-scrollbar{
+  display:none;
+}
+.hover{
+	position: relative;
+	left: 100%;
+	margin-left: -1.2rem;
+	transition: all 0.3s ease-in-out;
+}
+.play_icon{
+	width: 2rem;
+	vertical-align: middle;
+    margin-top: 3%;
+    margin-left: .5rem;
+    cursor: pointer;
+}
+.download_icon{
+	width: 2rem;
+	vertical-align: middle;
+    margin-top: 3%;
+    margin-left: .2rem;
+    cursor: pointer;
+}
+.operate_icon{
+	margin-left: 1rem;
+}
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 90%;
+	height: 6rem;
+	background: #fbfbfb;
+	border-radius: 2rem;
+	margin-left: 2%;
+}
+.albumpic_middle{
+	width: 5.9rem;
+	position: fixed;
+    left: 8%;
+}
+.now_songname{
+	display: inline-block;
+    font-size: 2.0rem;
+    position: fixed;
+    left: 21%;
+    bottom: 6%;
+    color: #333333;
+}
+.now_singername{
+	display: inline-block;
+    position: fixed;
+    right: 10%;
+    bottom: 6%;
+    color: #333333;
+}
+.audio{
+	width: 69%;
+    position: fixed;
+    left: 21%;
+    bottom: 0;
+}

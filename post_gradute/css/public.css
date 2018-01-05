@@ -1,0 +1,32 @@
+/*公共样式定义 start*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	font-size: 1.4rem;
+	width: 100%;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+a,
+a:hover,
+a:visited {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+/*公共样式定义 end*/

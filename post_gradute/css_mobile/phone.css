@@ -1,0 +1,120 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: #804b5f;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	font-size: 1.4rem;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+.phone_header {
+	width: auto;
+	height: 6.4rem;
+	/*border-bottom: .1rem solid #fff;*/
+}
+
+.arrow_left {
+	height: 6.4rem;
+	/*�ñ�ǩԪ���Ա��Ԫ�����ʽ����,������td��ǩ*/
+	display: table-cell;
+	vertical-align: middle;
+	float: left;
+	margin-left: 1.5rem;
+	line-height: 6.4rem;
+}
+
+.arrow_left img {
+	width: 3.0rem;
+	vertical-align: middle;
+}
+
+.phone_title {
+	color: #fff;
+	font-size: 2.5rem;
+	line-height: 6.4rem;
+	/*text-align: center;*/
+	/*display: block;*/
+	margin-left: 4%;
+}
+
+.phone_content>ul>li:nth-child(2n+1) {
+	background-color: #703f52;
+}
+
+.phone_content>ul>li:nth-child(2n) {
+	background-color: #7d4a5d;
+}
+
+.phone_eveline {
+	width: 100%;
+	height: 6.4rem;
+	/*border-bottom: .1rem solid #fff;*/
+}
+
+.phone_img {
+	width: 4.4rem;
+	vertical-align: middle;
+	margin: 1rem;
+	float: left;
+}
+
+.inform {
+	display: inline-block;
+	height: 6.4rem;
+}
+
+.name {
+	height: 3.2rem;
+	line-height: 3.2rem;
+	font-size: 2.2rem;
+	color: #f5c9da;
+}
+
+.number {
+	height: 3.2rem;
+	line-height: 3.2rem;
+	font-size: 1.6rem;
+	color: #b78e9e;
+}
+.operate_icon{
+	display: inline-block;
+	float: right;
+}
+.more {
+	width: 3.0rem;
+	float: right;
+	vertical-align: middle;
+	margin: 1.7rem .5rem;
+}
+
+.more:hover {
+	cursor: pointer;
+}
+
+.msg{
+	width: 3.0rem;
+	vertical-align: middle;
+	float: right;
+	margin-top: 1.7rem;
+	display: none;
+}
+.call {
+	width: 3.0rem;
+	vertical-align: middle;
+	float: right;
+	margin-top: 1.7rem;
+	margin-right: .3rem;
+	display: none;
+}

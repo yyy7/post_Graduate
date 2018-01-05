@@ -1,0 +1,343 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>music</title>
+		<!--<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css">-->
+		<script src="../js/jquery-1.8.3.min.js"></script>
+		<script src="../js/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).on("pageinit", "#page1", page1_init);
+			function page1_init() {	
+				$.ajax({
+						type: "post",
+						url: "http://route.showapi.com/213-4",
+						data: {
+							"showapi_appid": "39841",
+							"showapi_sign": "3b931c69138744f581892c4362755913",
+							"topid": 4
+						},
+						dataType: "json",
+						beforeSend: function() {
+							//alert("正在请求QQ音乐服务器资源，请稍后...");
+						},
+						success: function(data) {
+							//alert("服务器传回的数据:" + data);
+							var datas = "<div>";
+							$.each(data.showapi_res_body.pagebean.songlist, function(index, row) {
+								var imgpath = row.albumpic_small;
+								var url = row.url;
+								//var target = "mobile_playmusic.html?urlpath=" + row.url;
+								datas += "<div>";
+								//datas+="<h3>"+row.songname+"</h3>";
+								datas += "<ul>";
+								datas += "<li class='click'>";
+								datas += "<img  class='img1' src='" + imgpath + "'/>";
+								datas += "<div class='paiban'>";
+								datas += "<h3>" + row.songname + "</h3>";
+								datas += "<p>" + row.singername + "</p>";
+								datas +="<p class='url_hidden'>"+url+"</p>";
+								datas += "</div>";
+								datas += "</li>";
+								datas += "</ul>";
+								datas += "</div>";
+							});
+							datas += "</div>";
+
+							$("#contentview").html(datas);
+
+							$("#contentview").trigger("create");
+
+							$(".click").click(function() {
+								var url=$(this).children(".paiban").children(".url_hidden").text();
+								//alert(url);
+								
+								$(".audio").attr("src",url);
+								
+								var pic=$(this).children(".img1").attr("src");
+								var now_songname=$(this).children(".paiban").children("h3").text();
+								var now_singername=$(this).children(".paiban").children("p").eq(0).text();
+								
+								//alert(now_songname);
+								//alert(now_singername);
+								
+								$(".albumpic_middle").attr("src",pic);
+								$(".now_songname").text(now_songname);
+								$(".now_singername").text(now_singername);
+							});
+						}
+					})
+				
+				
+				//alert(111111);
+				var selectValue = "";
+				//首先要获取下拉选择框的值:
+				$("#musicinfo").on("change", function() {
+					//alert(11);
+					selectValue = $(this).val();
+					//alert("获取下拉选择框的值为:" + $(this).val());
+					if("" == selectValue) {
+						//alert("请选择音乐分类:");
+						return;
+					}
+					$.ajax({
+						type: "post",
+						url: "http://route.showapi.com/213-4",
+						data: {
+							"showapi_appid": "39841",
+							"showapi_sign": "3b931c69138744f581892c4362755913",
+							"topid": selectValue
+						},
+						dataType: "json",
+						beforeSend: function() {
+
+							//alert("正在请求QQ音乐服务器资源，请稍后...");
+
+						},
+						success: function(data) {
+							//alert("服务器传回的数据:" + data);
+							var datas = "<div>";
+							$.each(data.showapi_res_body.pagebean.songlist, function(index, row) {
+								var imgpath = row.albumpic_small;
+								var url = row.url;
+								//var target = "mobile_playmusic.html?urlpath=" + row.url;
+								datas += "<div>";
+								//datas+="<h3>"+row.songname+"</h3>";
+								datas += "<ul>";
+								datas += "<li class='click'>";
+								datas += "<img  class='img1' src='" + imgpath + "'/>";
+								datas += "<div class='paiban'>";
+								datas += "<h3>" + row.songname + "</h3>";
+								datas += "<p>" + row.singername + "</p>";
+								datas +="<p class='url_hidden'>"+url+"</p>";
+								datas += "</div>";
+								datas += "</li>";
+								datas += "</ul>";
+								datas += "</div>";
+							});
+							datas += "</div>";
+
+							$("#contentview").html(datas);
+
+							$("#contentview").trigger("create");
+
+							$(".click").click(function() {
+								var url=$(this).children(".paiban").children(".url_hidden").text();
+								//alert(url);
+								
+								$(".audio").attr("src",url);
+								
+								var pic=$(this).children(".img1").attr("src");
+								var now_songname=$(this).children(".paiban").children("h3").text();
+								var now_singername=$(this).children(".paiban").children("p").eq(0).text();
+								
+								//alert(now_songname);
+								//alert(now_singername);
+								
+								$(".albumpic_middle").attr("src",pic);
+								$(".now_songname").text(now_songname);
+								$(".now_singername").text(now_singername);
+							});
+						}
+					})
+				});
+			}
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				font-size: 62.5%;
+			}
+			
+			body {
+				width: 100%;
+				background-image: url(../img_mobile/music.png);
+			}
+			
+			.header img {
+				/*margin-left: 2%;
+				margin-top: 2%;*/
+				position: fixed;
+				top: 2.1% ;
+				width: 30px;
+				height: 30px;
+			}
+			
+			a:link {
+				text-decoration: none;
+				font-family: "微软雅黑";
+				color: blueviolet;
+				font-family: "微软雅黑";
+				font-size: 1.5rem;
+				color: brown;
+			}
+			
+			#musicinfo {
+				color: white;
+				font-family: "微软雅黑";
+			}
+			
+			select {
+				display: block;
+				margin: 0 auto;
+				/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+				border: solid 1px #000;
+				/*很关键：将默认的select选择框样式清除*/
+				appearance: none;
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				9
+				/*在选择框的最右侧中间显示小箭头图片*/
+				background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+				/*为下拉小箭头留出一点位置，避免被文字覆盖    */
+				padding-right: 14px;
+				background-color: black;
+				opacity: 0.8;
+				border-radius: 1rem;
+				font-size: 1.8rem;
+			}
+			
+			select::-ms-expand {
+				display: none;
+			}
+			/*#contentview{
+	height:80%;
+}*/		
+			ul li {
+				height: 20%;
+				width: 100%;
+				float: left;
+				list-style: none;
+			}
+			
+			h3{
+				font-size: 1.4rem;
+			}
+			p{
+				font-size: 1.2rem;
+			}
+			
+			.paiban {
+				float: left;
+				margin-top: 6%;
+				margin-left: 1rem;
+			}
+			.url_hidden{
+				display: none;
+			}
+			
+			.img1 {
+				float: right;
+				margin-bottom: .5rem;
+				margin-right: 0.5rem;
+			}
+			
+			.foot {
+				position: fixed;
+				bottom: 0rem;
+				background-color: black;
+				/*opacity: 0.8;*/
+				width: 100%;
+				height: 3rem;
+				color: white;
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 4rem;
+				width: 90%;
+				height: 6rem;
+				background: #fbfbfb;
+				border-radius: 2rem;
+				margin-left: 2%;
+				
+			}
+			
+			.albumpic_middle {
+				width: 5.9rem;
+				position: fixed;
+				left: 7%;
+				bottom: 7.2%;
+			}
+			
+			.now_songname {
+				display: inline-block;
+				font-size: 1.5rem;
+				position: fixed;
+				left: 27%;
+				bottom: 13%;
+				color: #333333;
+				z-index: 20;
+			}
+			
+			.now_singername {
+				display: inline-block;
+				position: fixed;
+				right: 12%;
+				bottom: 13%;
+				color: #333333;
+				z-index: 20;
+			}
+			
+			.audio {
+				width: 60%;
+				position: fixed;
+				left: 26%;
+				bottom: 4rem;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 页面开始 -->
+		<div id="page1" data-role="page">
+			<!-- 头部开始 -->
+			
+			<div class="header">
+				<span class="header_icon">
+					<a href="javascript:history.go(-1);location.reload()">
+						<img src="../img_mobile/black_back.png" />
+					</a>
+				</span>
+			</div>
+			<div>
+				<div>
+					<!--<label for="musicinfo">请选择音乐列表</label>-->
+					<select name="musicinfo" id="musicinfo">
+						<option value="">请选择音乐分类:</option>
+						<option value="3">欧美</option>
+						<option value="4">流行榜</option>
+						<option value="5">内地</option>
+						<option value="6">港台</option>
+						<option value="16">韩国</option>
+						<option value="17">日本</option>
+						<option value="26">热歌</option>
+						<option value="27">新歌</option>
+						<option value="28">网络歌曲</option>
+						<option value="32">音乐人</option>
+						<option value="36">K歌金曲</option>
+					</select>
+				</div>
+			</div>
+			<!-- 头部结束 -->
+			<div id="contentview"></div>
+			<!-- 底部开始 -->
+			<div class="footer">
+				<img class="albumpic_middle"  src=""/>
+				<span class="now_songname">夏至未至</span>
+				<span class="now_singername">胡夏</span>
+				<audio class="audio" controls="controls" src="" autoplay="autoplay"></audio>
+			</div>
+
+			<div class="foot">
+				<h3>音乐天堂之ABB@2017</h3>
+			</div>
+			<!-- 底部结束 -->
+		</div>
+	</body>
+</html>

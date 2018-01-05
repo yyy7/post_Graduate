@@ -1,0 +1,97 @@
+.content{
+	width: 100%;
+	height: 55rem;
+	background: url(../img/yy.gif);
+}
+.header img{
+	margin-left: 3% ;
+	margin-top: 1%;	
+	width: 40px;
+	height: 40px;
+}
+
+.header_font{
+	font-size: 30px;
+	font-family:Tahoma,Helvetica,Arial,'宋体',sans-serif;
+	margin-left: 6%;
+	color: white;
+	margin-top: -3.5rem;
+	display: block;
+}
+.img_middle{
+	width: 80%;
+	height: 60%;
+	/*background: #ccc;*/
+	position: fixed;
+	left: 23%;
+	top: 25%;
+	float: left;
+	
+}
+
+.mukuai{
+	width: 50%;
+}
+
+.img_middle img{
+	width: 6rem;
+	float: left;
+}
+.img_middle p{
+	color: #fff;
+}
+.mukuai2 img{
+	margin-left: 8%;
+	margin-top: 0.5%;
+}
+
+.music{
+	margin-left: 9%;
+	margin-top: 5%;
+}
+.mukuai3 img{
+	margin-left: 18%;
+	margin-top: 0.5%;
+}
+.yulu{
+	margin-left: 19%;
+	margin-top: 6%;
+}
+.collage{
+	margin-left: 29%;
+	margin-top: 6%;
+}
+.mukuai4 img{
+	margin-left: 28%;
+	margin-top: 0.5%;
+}
+
+.search{
+	margin-left: 42%;
+	margin-top: -9.5%;
+}
+.mukuai5 img{
+	margin-left: 5%;
+	margin-top: -7.5%;
+}
+
+.study{
+	margin-left: 52%;
+	margin-top: -9.3%;
+}
+.mukuai6 img{
+	margin-left: 16%;
+	margin-top: -15%;
+}
+
+.gift{
+	margin-left: 61.5%;
+	margin-top: -8.5%;
+}
+.mukuai7 img{
+	margin-left: 26%;
+	margin-top: -22%;
+}
+.mukuai1,.mukuai2,.mukuai3,.mukuai4,.mukuai5,.mukuai6,.mukuai7{
+	cursor: pointer;
+}

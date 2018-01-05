@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stus>
+    <stu>
+        <name>汪芳</name>
+      	<phonenumber>18351937770</phonenumber>
+      	<facepath>wf.jpg</facepath>
+    </stu>
+    <stu>
+        <name>姚媛媛</name>
+      	<phonenumber>18351959718</phonenumber>
+      	<facepath>yyy.jpg</facepath>
+    </stu>
+    <stu>
+        <name>刘丹丹</name>
+      	<phonenumber>17768127165</phonenumber>
+      	<facepath>ldd.jpg</facepath>
+    </stu>
+    <stu>
+        <name>赵萍萍</name>
+      	<phonenumber>15951765328</phonenumber>
+      	<facepath>zpp.jpg</facepath>
+    </stu>
+    <stu>
+        <name>张三</name>
+      	<phonenumber>15951765328</phonenumber>
+      	<facepath>zs.jpg</facepath>
+    </stu>
+    <stu>
+        <name>李四</name>
+      	<phonenumber>15951765328</phonenumber>
+      	<facepath>ls.jpg</facepath>
+    </stu>
+</stus>
